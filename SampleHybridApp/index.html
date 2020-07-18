@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=2.0" />
+    </head>
+    <body>
+        <center>
+        <br/>
+        <p id="sum" style="font-size:40px;color:red;">0</p>
+        <button onclick="buttonClick()">Increment</button>
+        <br/>
+        <button onclick="showAlert()">Show Alert</button>
+        </center>
+    </body>
+    <script>
+        function addToSum(value){
+            var current = parseInt(document.getElementById("sum").innerText);
+            document.getElementById("sum").innerText = current + +value;
+        }
+    
+        function web2Native(payload){
+            try{
+                webkit.messageHandlers.callback.postMessage(payload);
+            }catch(err){}
+        }
+    
+        function buttonClick(){
+            web2Native("addNewRandomValue")
+        }
+    
+        function showAlert() {
+            alert('Hello from webview!')
+        }
+    </script>
+</html>
